@@ -5,6 +5,7 @@ MAINTAINER Vinod Vydier<vvydier@newrelic.com>
 RUN REPOLIST=rhel-7-server-rpms,rhel-7-server-optional-rpms,epel \
 ### Add your package needs here
     INSTALL_PKGS="python2-pip" && \
+    yum-config-manager --disable rhel-7-server-htb-rpms && \
     yum update \
     yum -y update-minimal --security --sec-severity=Important --sec-severity=Critical --setopt=tsflags=nodocs \
       --security --sec-severity=Important --sec-severity=Critical && \
