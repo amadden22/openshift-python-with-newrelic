@@ -1,10 +1,11 @@
-FROM registry.access.redhat.com/rhel7.3:latest
+FROM registry.access.redhat.com/rhel7
 MAINTAINER Vinod Vydier<vvydier@newrelic.com>
 
 ### Add necessary Red Hat repos here
 RUN REPOLIST=rhel-7-server-rpms,rhel-7-server-optional-rpms,epel \
 ### Add your package needs here
     INSTALL_PKGS="python2-pip" && \
+    yum update \
     yum -y update-minimal --security --sec-severity=Important --sec-severity=Critical --setopt=tsflags=nodocs \
       --security --sec-severity=Important --sec-severity=Critical && \
     curl -o epel-release-latest-7.noarch.rpm -SL https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm \
